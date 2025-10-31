@@ -1,5 +1,5 @@
 # workload-calorie-correlation
-# 🍽️ Impact of Daily Academic Intensity on Dietary Deviation
+# Impact of Daily Academic Intensity on Dietary Deviation
 
 ## 1. Project Proposal
 This project aims to investigate the relationship between **daily academic/workload intensity** and **unplanned high-calorie food consumption**.  
