@@ -24,7 +24,7 @@ Optional supporting variables:
 
 ## 3. Data Collection Plan
 - The data will be **self-collected over a 20-day period**.  
-- Each day, the participant (the researcher) will:
+- Each day, I will:
   1. Assign a **Workload_Score (0–5)** based on daily activities (lessons, exams, meetings, gym, etc.).
   2. Record all meals and their estimated **calorie values** using a calorie-tracking app or online database.
   3. Mark each meal as **planned** (fits the diet plan) or **unplanned** (extra snack, high-calorie, or impulse food).  
