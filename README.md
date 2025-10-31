@@ -13,7 +13,7 @@ The hypothesis is that on days with higher academic or personal workload (e.g., 
 ## 2. Variables and Data Description
 | Variable | Type | Description |
 |-----------|------|-------------|
-| `Academic_Load` | Numerical | The **actual daily workload**, measured by the total number of homework, quizzes, or project deadlines assigned in SUCourse+ (or similar academic platforms). For example, if 2 homework and 1 project deliverable are due on the same day, the `Academic_Load` value = 3. |
+| `Academic_Load` | Numerical | The **actual daily workload**, measured by the total number of homework, quizzes, or project deadlines assigned in SUCourse+.  For example, if 2 homework and 1 project deliverable are due on the same day, the `Academic_Load` value = 3. |
 | `Unplanned_Meals` | Numerical | The count of meals/snacks that exceed the planned calorie intake or deviate from the daily diet plan. |
 | `Calories_Total` | Numerical | Total calories consumed during the day (recorded for additional analysis and validation). |
 
