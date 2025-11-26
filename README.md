@@ -93,7 +93,7 @@ Below are the **five final graphs** used in the analysis.
 
 Higher workload categories → higher calorie averages.
 
-![plot](Fig1.png)
+![plot](calories_by_workload.png)
 
 ---
 
@@ -101,7 +101,7 @@ Higher workload categories → higher calorie averages.
 
 Shows weekly academic intensity pattern.
 
-![plot](Fig2.png)
+![plot](workload_by_dayofweek.png)
 
 ---
 
@@ -109,7 +109,7 @@ Shows weekly academic intensity pattern.
 
 Weekdays show higher calories.
 
-![plot](Fig3.png)
+![plot](weekday_weekend_calories.png)
 
 ---
 
@@ -117,7 +117,7 @@ Weekdays show higher calories.
 
 A clear positive trend — supports H₁.
 
-![plot](Fig4.png)
+![plot](regression_workload_calories.png)
 
 ---
 
@@ -125,7 +125,7 @@ A clear positive trend — supports H₁.
 
 Raw distribution of all points.
 
-![plot](Fig5.png)
+![plot](scatter_workload_calories.png)
 
 ---
 
