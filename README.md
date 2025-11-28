@@ -60,94 +60,69 @@ Daily workload is computed via a custom formula combining:
 
 ---
 
-# **5. Visualizations**
-
-Below are the final graphs used in the analysis.
-(All images are loaded directly from the repository root.)
-
----
+# **5. Visualization**
 
 ## **5.1 Scatter: Workload Score vs Calories**
 
-```
 ![Scatter Workload vs Calories](scatter_workload_calories.png)
-```
 
 ---
 
 ## **5.2 Regression: Workload Score vs Calories**
 
-```
 ![Regression Workload vs Calories](regression_workload_calories.png)
-```
 
 ---
 
 ## **5.3 Workload Score Distribution**
 
-```
 ![Workload Distribution](workload_distribution.png)
-```
 
 ---
 
 ## **5.4 Weekday vs Weekend Calories**
 
-```
 ![Calories Weekday Weekend](weekday_weekend_calories.png)
-```
 
 ---
 
 ## **5.5 Average Calories by Day of Week**
 
-```
 ![Calories by Day](calories_by_dayofweek.png)
-```
 
 ---
 
 ## **5.6 Average Workload by Day of Week**
 
-```
 ![Workload by Day](workload_by_dayofweek.png)
-```
 
 ---
 
 ## **5.7 Daily Calories Over Time (Exam Days Highlighted)**
 
-```
 ![Daily Calories Over Time](calories_timeseries_exam.png)
-```
 
 ---
 
 ## **5.8 Weekly Average Calories**
 
-```
 ![Weekly Calories](weekly_calories.png)
-```
 
 ---
 
 ## **5.9 Correlation Heatmap**
 
-```
 ![Correlation Heatmap](correlation_heatmap.png)
-```
 
 ---
 
 ## **5.10 Calories by Workload Category**
 
-```
 ![Calories by Workload](calories_by_workload.png)
-```
 
 ---
 
-# **6. Hypothesis Testing Results (Ready for Report)**
+# **6. Hypothesis Testing Results **
 
 ## **6.1 Independent Samples t-Test**
 
