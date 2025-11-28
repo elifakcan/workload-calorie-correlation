@@ -27,17 +27,45 @@ Workload and daily calorie intake are not related.
 
 # **3. Dataset Description**
 
-Daily data collected throughout November, containing workload activities and calorie intake.
+Daily data were collected throughout September 22 to end of the November from two different sources:
+(1) **Academic workload data from SUCourse+**,
+(2) **Calorie intake data from the Yazıo nutrition tracking app**.
 
-| Variable           | Description                    |
-| ------------------ | ------------------------------ |
-| `Date`             | Daily entry                    |
-| `Course_Load_Min`  | Lecture minutes attended       |
-| `Homework_Count`   | Number of homework assignments |
-| `Project_Count`    | Number of project tasks        |
-| `Exam_Count`       | Number of exams taken          |
-| `Exam_Number_Week` | Weekly exam intensity          |
-| `Calories`         | Total daily calories           |
+---
+
+## **3.1 Academic Workload Data (SUCourse+)**
+
+All workload-related variables were extracted from **Sabancı University’s SUCourse+ system**.
+Every day, the academic tasks listed on SUCourse+ (lectures, homework, projects, exams) were manually recorded.
+
+| Variable           | Description                                                       |
+| ------------------ | ----------------------------------------------------------------- |
+| `Course_Load_Min`  | Lecture minutes attended                                          |
+| `Homework_Count`   | Number of homework assignments due on SUCourse+                   |
+| `Project_Count`    | Number of project tasks listed on SUCourse+                       |
+| `Exam_Count`       | Number of exams taken                                             |
+| `Exam_Number_Week` | Weekly exam intensity calculated using SUCourse+ exam information |
+
+---
+
+## **3.2 Nutrition Data (Yazıo App)**
+
+Calorie data were collected using **Yazıo**, a mobile nutrition-tracking application.
+All meals and snacks were logged daily in Yazıo, and the app automatically computed total calorie intake.
+
+| Variable   | Description                                      |
+| ---------- | ------------------------------------------------ |
+| `Calories` | Total daily calories calculated by the Yazıo app |
+
+---
+
+## **3.3 Combined Dataset Structure**
+
+The two data sources were merged on a common `Date` field, forming a unified dataset for analysis.
+
+| Variable | Description                    |
+| -------- | ------------------------------ |
+| `Date`   | Daily record used as merge key |
 
 ---
 
