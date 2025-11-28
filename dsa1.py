@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Final Workload–Calorie Correlation System (Clean Version)
+Final Workload–Calorie Correlation System
 Includes:
 - Daily Base Workload
 - Weekly Fatigue Factor
@@ -204,3 +204,4 @@ print("One-Way ANOVA (Low vs Medium vs High)")
 print(f"F-statistic: {F_stat:.4f}")
 print(f"p-value: {p_val_anova:.4f}")
 print("\n=========================================\n")
+
