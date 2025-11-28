@@ -1,8 +1,6 @@
 
 ---
 
-# **Final README.md (Updated & Polished Version)**
-
 # **Workload–Calorie Correlation Analysis**
 
 This project analyzes how **daily academic workload** affects **calorie intake** using a custom workload scoring model and statistical hypothesis testing.
