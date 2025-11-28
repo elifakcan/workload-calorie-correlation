@@ -63,15 +63,11 @@ Daily workload is computed via a custom formula combining:
 # **5. Visualizations**
 
 Below are the final graphs used in the analysis.
-
-Each image will be uploaded to GitHub as:
-`images/<filename>.png`
+(All images are loaded directly from the repository root.)
 
 ---
 
 ## **5.1 Scatter: Workload Score vs Calories**
-
-Shows raw relationship and spread.
 
 ```
 ![Scatter Workload vs Calories](scatter_workload_calories.png)
@@ -81,8 +77,6 @@ Shows raw relationship and spread.
 
 ## **5.2 Regression: Workload Score vs Calories**
 
-Positive trend → supports H₁.
-
 ```
 ![Regression Workload vs Calories](regression_workload_calories.png)
 ```
@@ -91,8 +85,6 @@ Positive trend → supports H₁.
 
 ## **5.3 Workload Score Distribution**
 
-Shows skew toward low workload days.
-
 ```
 ![Workload Distribution](workload_distribution.png)
 ```
@@ -100,8 +92,6 @@ Shows skew toward low workload days.
 ---
 
 ## **5.4 Weekday vs Weekend Calories**
-
-Weekdays (higher workload) → higher calorie intake.
 
 ```
 ![Calories Weekday Weekend](weekday_weekend_calories.png)
@@ -149,6 +139,14 @@ Weekdays (higher workload) → higher calorie intake.
 
 ---
 
+## **5.10 Calories by Workload Category**
+
+```
+![Calories by Workload](calories_by_workload.png)
+```
+
+---
+
 # **6. Hypothesis Testing Results (Ready for Report)**
 
 ## **6.1 Independent Samples t-Test**
@@ -162,9 +160,7 @@ Do I consume significantly different calories on **low-workload** vs **high-work
 * **Low Workload:** Workload ≤ 3 → *47 days*
 * **High Workload:** Workload ≥ 8 → *10 days*
 
-### **Method:**
-
-**Welch’s t-test** (assumes unequal variance)
+### **Method:** Welch's t-test (unequal variance)
 
 ### **Results**
 
@@ -173,13 +169,15 @@ Do I consume significantly different calories on **low-workload** vs **high-work
 
 ### **Interpretation**
 
-* p > 0.05 → **not statistically significant**
-* High-workload days *appear* higher in plots, but the difference is not strong enough to be statistically significant.
-* Main reason: **only 10 high-workload days**, lowering statistical power.
+* p > 0.05 → **Not statistically significant**
+* High-workload days appear slightly higher in descriptive plots, but:
+
+  * Sample size of high-workload days is very small (n = 10)
+  * Not enough statistical power
 
 ### **Conclusion**
 
-There is **no statistically significant difference** in calorie intake between low-workload and high-workload days.
+There is **no statistically significant difference** in calorie intake between low and high workload days.
 
 ---
 
@@ -187,9 +185,9 @@ There is **no statistically significant difference** in calorie intake between l
 
 ### **Research Question:**
 
-Does calorie intake differ across **all workload levels**?
+Does calorie intake differ across workload categories?
 
-### **Groups:**
+### **Groups**
 
 * Low
 * Medium
@@ -202,17 +200,20 @@ Does calorie intake differ across **all workload levels**?
 
 ### **Interpretation**
 
-* p < 0.01 → **statistically significant**
-* Calorie consumption **depends on workload category**.
-* Descriptive patterns indicate:
+* p < 0.01 → **Highly significant**
+* Strong evidence that calorie intake varies based on workload level
 
-  * Medium workload → highest calories
-  * High workload → also elevated
-  * Low workload → lowest
+### **Which groups differ?**
+
+Descriptive trends indicate:
+
+* **Medium workload** → highest calories
+* **High workload** → elevated
+* **Low workload** → lowest
 
 ### **Conclusion**
 
-There is **strong statistical evidence** that workload level affects calorie intake.
+Workload intensity significantly affects calorie consumption across categories.
 
 ---
 
@@ -220,33 +221,29 @@ There is **strong statistical evidence** that workload level affects calorie int
 
 * **t-test:** Low vs High → Not significant
 * **ANOVA:** Low vs Medium vs High → ✔ Significant
-* Interpretation:
 
-  * Extreme low–high comparison lacks enough data
-  * But overall calorie patterns **do change** with workload intensity
+This suggests:
+
+* Extreme low–high comparison lacks statistical power
+* But overall calorie patterns **do change meaningfully** with workload level
 
 ---
 
 # **8. Tools Used**
 
-* **Python**
-
-  * pandas
-  * numpy
-  * seaborn
-  * matplotlib
-  * scipy
-* **Excel** for preprocessing
+* **Python:** pandas, numpy, seaborn, matplotlib, scipy
+* **Excel:** preprocessing
 
 ---
 
 # **9. Conclusion**
 
-The overall evidence suggests:
+Overall:
 
 > **Higher workload generally leads to higher calorie intake**,
-> **even though the Low–High difference alone isn’t large enough to be statistically significant.**
+> although the difference between only low and high days is not strong enough to be statistically significant.
 
-This supports the **trend-level relationship** hypothesized.
+The broader workload categories tell a clearer story:
+**workload intensity does influence calorie consumption.**
 
 ---
