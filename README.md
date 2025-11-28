@@ -1,152 +1,254 @@
 
+---
 
-## **Workload–Calorie Correlation Analysis**
+# **Final README.md (Updated & Polished Version)**
 
-### *Understanding how academic workload influences daily calorie intake*
+# **Workload–Calorie Correlation Analysis**
+
+This project analyzes how **daily academic workload** affects **calorie intake** using a custom workload scoring model and statistical hypothesis testing.
 
 ---
 
-## ## 1. Research Question
+# **1. Research Question**
 
-**Does a higher academic workload lead to an increase in daily calorie intake?**
-
----
-
-## ## 2. Hypotheses
-
-### **H₁ (Alternative Hypothesis)**
-
-Higher workload → higher average daily calorie intake.
-
-### **H₀ (Null Hypothesis)**
-
-Workload and calorie intake are not related.
+**Does a higher academic workload lead to increased daily calorie intake?**
 
 ---
 
-## ## 3. Dataset Description
+# **2. Hypotheses**
 
-The dataset contains **daily academic activity & calorie intake** for the month of November.
-Each row represents one day.
+### **H₁ – Alternative Hypothesis**
 
-### **Variables**
+Higher workload → higher daily calorie intake.
 
-| Variable           | Description                        |
-| ------------------ | ---------------------------------- |
-| `Date`             | Daily record                       |
-| `Course_Load_Min`  | Total minutes of lectures attended |
-| `Homework_Count`   | Number of homework assignments     |
-| `Project_Count`    | Number of project submissions      |
-| `Exam_Count`       | Number of exams taken on that day  |
-| `Exam_Number_Week` | Exam intensity for that week       |
-| `Calories`         | Total calories consumed            |
+### **H₀ – Null Hypothesis**
+
+Workload and daily calorie intake are not related.
 
 ---
 
-## ## 4. Workload Model
+# **3. Dataset Description**
 
-Daily workload is calculated using the **Daily Base Workload Formula**:
+Daily data collected throughout November, containing workload activities and calorie intake.
 
-### **Components:**
-
-* **Attendance:**
-  [
-  \text{attendance} = \frac{\text{Course_Load_Min}}{50}
-  ]
-
-* **Homework Weight:**
-
-  * Heavier on exam days
-  * Normal weight otherwise
-
-* **Project Weight:**
-
-  * Higher weight on exam days
-
-* **Exam Weight:**
-  Increases based on exam intensity that week.
-
-* **Combo Bonus:**
-  Homework + Project + Exam on the same day adds extra load.
+| Variable           | Description                    |
+| ------------------ | ------------------------------ |
+| `Date`             | Daily entry                    |
+| `Course_Load_Min`  | Lecture minutes attended       |
+| `Homework_Count`   | Number of homework assignments |
+| `Project_Count`    | Number of project tasks        |
+| `Exam_Count`       | Number of exams taken          |
+| `Exam_Number_Week` | Weekly exam intensity          |
+| `Calories`         | Total daily calories           |
 
 ---
 
-## ### Final Formula
+# **4. Workload Score Model**
+
+Daily workload is computed via a custom formula combining:
+
+* Lecture attendance
+* Homework weight
+* Project weight
+* Exam intensity
+* Combo bonus (HW + Project + Exam same day)
+* Weekly Fatigue Factor (based on weekly workload)
+
+**Final Formula:**
 
 [
 \text{Workload Score} = \text{Daily Base Workload} \times \text{Weekly Fatigue Factor}
 ]
 
-Weekly fatigue factor increases with:
+---
 
-* More weekly exams
-* More homework
-* More projects
+# **5. Visualizations**
+
+Below are the final graphs used in the analysis.
+
+Each image will be uploaded to GitHub as:
+`images/<filename>.png`
 
 ---
 
-## ## 5. Visualizations
+## **5.1 Scatter: Workload Score vs Calories**
 
-Below are the **five final graphs** used in the analysis.
+Shows raw relationship and spread.
 
-### ###  Average Calories by Workload Category
-
-Higher workload categories → higher calorie averages.
-
-![plot](calories_by_workload.png)
+```
+![Scatter Workload vs Calories](images/scatter_workload_calories.png)
+```
 
 ---
 
-### ###  Average Workload Score by Day of Week
+## **5.2 Regression: Workload Score vs Calories**
 
-Shows weekly academic intensity pattern.
+Positive trend → supports H₁.
 
-![plot](workload_by_dayofweek.png)
-
----
-
-### ###  Calories: Weekday vs Weekend
-
-Weekdays show higher calories.
-
-![plot](weekday_weekend_calories.png)
+```
+![Regression Workload vs Calories](images/regression_workload_calories.png)
+```
 
 ---
 
-### ###  Regression: Workload Score vs Calories
+## **5.3 Workload Score Distribution**
 
-A clear positive trend — supports H₁.
+Shows skew toward low workload days.
 
-![plot](regression_workload_calories.png)
-
----
-
-### ###  Scatter Plot: Workload Score vs Calories
-
-Raw distribution of all points.
-
-![plot](scatter_workload_calories.png)
+```
+![Workload Distribution](images/workload_distribution.png)
+```
 
 ---
 
-## ## 6. Conclusion
+## **5.4 Weekday vs Weekend Calories**
 
-✔ As workload increases, **average daily calorie intake also increases**.
-✔ Regression shows **strong positive association**.
-✔ Weekdays (higher workload) → **higher calorie averages**.
+Weekdays (higher workload) → higher calorie intake.
 
-**Therefore, the hypothesis H₁ is supported.**
+```
+![Calories Weekday Weekend](images/weekday_weekend_calories.png)
+```
 
 ---
 
-## ## 7. Tools Used
+## **5.5 Average Calories by Day of Week**
 
-* Python
+```
+![Calories by Day](images/calories_by_dayofweek.png)
+```
+
+---
+
+## **5.6 Average Workload by Day of Week**
+
+```
+![Workload by Day](images/workload_by_dayofweek.png)
+```
+
+---
+
+## **5.7 Daily Calories Over Time (Exam Days Highlighted)**
+
+```
+![Daily Calories Over Time](images/calories_timeseries_exam.png)
+```
+
+---
+
+## **5.8 Weekly Average Calories**
+
+```
+![Weekly Calories](images/weekly_calories.png)
+```
+
+---
+
+## **5.9 Correlation Heatmap**
+
+```
+![Correlation Heatmap](images/correlation_heatmap.png)
+```
+
+---
+
+# **6. Hypothesis Testing Results (Ready for Report)**
+
+## **6.1 Independent Samples t-Test**
+
+### **Research Question:**
+
+Do I consume significantly different calories on **low-workload** vs **high-workload** days?
+
+### **Groups**
+
+* **Low Workload:** Workload ≤ 3 → *47 days*
+* **High Workload:** Workload ≥ 8 → *10 days*
+
+### **Method:**
+
+**Welch’s t-test** (assumes unequal variance)
+
+### **Results**
+
+* **t-statistic:** −1.7000
+* **p-value:** 0.1209
+
+### **Interpretation**
+
+* p > 0.05 → **not statistically significant**
+* High-workload days *appear* higher in plots, but the difference is not strong enough to be statistically significant.
+* Main reason: **only 10 high-workload days**, lowering statistical power.
+
+### **Conclusion**
+
+There is **no statistically significant difference** in calorie intake between low-workload and high-workload days.
+
+---
+
+## **6.2 One-Way ANOVA (Low vs Medium vs High Workload)**
+
+### **Research Question:**
+
+Does calorie intake differ across **all workload levels**?
+
+### **Groups:**
+
+* Low
+* Medium
+* High
+
+### **Results**
+
+* **F-statistic:** 5.9362
+* **p-value:** 0.0043
+
+### **Interpretation**
+
+* p < 0.01 → **statistically significant**
+* Calorie consumption **depends on workload category**.
+* Descriptive patterns indicate:
+
+  * Medium workload → highest calories
+  * High workload → also elevated
+  * Low workload → lowest
+
+### **Conclusion**
+
+There is **strong statistical evidence** that workload level affects calorie intake.
+
+---
+
+# **7. Summary of Findings**
+
+* **t-test:** Low vs High → Not significant
+* **ANOVA:** Low vs Medium vs High → ✔ Significant
+* Interpretation:
+
+  * Extreme low–high comparison lacks enough data
+  * But overall calorie patterns **do change** with workload intensity
+
+---
+
+# **8. Tools Used**
+
+* **Python**
 
   * pandas
   * numpy
   * seaborn
   * matplotlib
-* Excel (data cleaning & preprocessing)
+  * scipy
+* **Excel** for preprocessing
+
+---
+
+# **9. Conclusion**
+
+The overall evidence suggests:
+
+> **Higher workload generally leads to higher calorie intake**,
+> **even though the Low–High difference alone isn’t large enough to be statistically significant.**
+
+This supports the **trend-level relationship** hypothesized.
 
 ---
