@@ -74,7 +74,7 @@ Each image will be uploaded to GitHub as:
 Shows raw relationship and spread.
 
 ```
-![Scatter Workload vs Calories](images/scatter_workload_calories.png)
+![Scatter Workload vs Calories](scatter_workload_calories.png)
 ```
 
 ---
@@ -84,7 +84,7 @@ Shows raw relationship and spread.
 Positive trend → supports H₁.
 
 ```
-![Regression Workload vs Calories](images/regression_workload_calories.png)
+![Regression Workload vs Calories](regression_workload_calories.png)
 ```
 
 ---
@@ -94,7 +94,7 @@ Positive trend → supports H₁.
 Shows skew toward low workload days.
 
 ```
-![Workload Distribution](images/workload_distribution.png)
+![Workload Distribution](workload_distribution.png)
 ```
 
 ---
@@ -104,7 +104,7 @@ Shows skew toward low workload days.
 Weekdays (higher workload) → higher calorie intake.
 
 ```
-![Calories Weekday Weekend](images/weekday_weekend_calories.png)
+![Calories Weekday Weekend](weekday_weekend_calories.png)
 ```
 
 ---
@@ -112,7 +112,7 @@ Weekdays (higher workload) → higher calorie intake.
 ## **5.5 Average Calories by Day of Week**
 
 ```
-![Calories by Day](images/calories_by_dayofweek.png)
+![Calories by Day](calories_by_dayofweek.png)
 ```
 
 ---
@@ -120,7 +120,7 @@ Weekdays (higher workload) → higher calorie intake.
 ## **5.6 Average Workload by Day of Week**
 
 ```
-![Workload by Day](images/workload_by_dayofweek.png)
+![Workload by Day](workload_by_dayofweek.png)
 ```
 
 ---
@@ -128,7 +128,7 @@ Weekdays (higher workload) → higher calorie intake.
 ## **5.7 Daily Calories Over Time (Exam Days Highlighted)**
 
 ```
-![Daily Calories Over Time](images/calories_timeseries_exam.png)
+![Daily Calories Over Time](calories_timeseries_exam.png)
 ```
 
 ---
@@ -136,7 +136,7 @@ Weekdays (higher workload) → higher calorie intake.
 ## **5.8 Weekly Average Calories**
 
 ```
-![Weekly Calories](images/weekly_calories.png)
+![Weekly Calories](weekly_calories.png)
 ```
 
 ---
@@ -144,7 +144,7 @@ Weekdays (higher workload) → higher calorie intake.
 ## **5.9 Correlation Heatmap**
 
 ```
-![Correlation Heatmap](images/correlation_heatmap.png)
+![Correlation Heatmap](correlation_heatmap.png)
 ```
 
 ---
