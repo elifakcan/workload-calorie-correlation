@@ -116,12 +116,6 @@ Daily workload is computed via a custom formula combining:
 
 ---
 
-## **5.10 Calories by Workload Category**
-
-![Calories by Workload](calories_by_workload.png)
-
----
-
 # **6. Hypothesis Testing Results **
 
 ## **6.1 Independent Samples t-Test**
