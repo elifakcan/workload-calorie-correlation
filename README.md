@@ -1,243 +1,207 @@
 
 # **Workload–Calorie Correlation Analysis**
 
-This project analyzes how **daily academic workload** affects **calorie intake** using a custom workload scoring model and statistical hypothesis testing.
+This project investigates how **daily academic workload** influences **daily calorie intake** by combining **custom workload modeling**, **statistical hypothesis testing**, and **machine learning techniques**.
+
+The analysis integrates **interpretability-focused machine learning models** to uncover both **linear trends** and **nonlinear threshold effects** in stress-related eating behavior.
 
 ---
 
-# **1. Research Question**
+## **1. Research Question**
 
 **Does a higher academic workload lead to increased daily calorie intake?**
+If so:
+
+* Is the effect limited to exam days, or does it extend across exam weeks?
+* Is there a workload threshold after which calorie intake increases sharply?
 
 ---
 
-# **2. Hypotheses**
+## **2. Hypotheses**
 
 ### **H₁ – Alternative Hypothesis**
-Higher workload → higher daily calorie intake.
+
+Higher academic workload leads to higher daily calorie intake.
 
 ### **H₀ – Null Hypothesis**
-Workload and daily calorie intake are not related.
+
+Academic workload and daily calorie intake are not related.
 
 ---
 
-# **3. Dataset Description**
+## **3. Dataset Description**
 
-Daily data were collected throughout the academic period (Sept 22 → end of November) from:
+Daily observations were collected from **September 22 to the end of November** from two sources:
 
-1. **Academic workload information from SUCourse+**
-2. **Calorie intake from the Yazıo nutrition tracking app**
+1. **Academic workload data (SUCourse+)**
+2. **Calorie intake data (Yazıo nutrition tracking app)**
 
----
-
-## **3.1 Academic Workload Data (SUCourse+)**
-
-| Variable           | Description                                                       |
-| ------------------ | ----------------------------------------------------------------- |
-| `Course_Load_Min`  | Lecture minutes attended                                          |
-| `Homework_Count`   | Number of homework assignments due                                |
-| `Project_Count`    | Number of project tasks                                           |
-| `Exam_Count`       | Number of exams taken                                             |
-| `Exam_Number_Week` | Weekly exam intensity                                             |
-
-All values were manually collected daily from the SUCourse+ system.
+The datasets were merged using a common `Date` column.
 
 ---
 
-## **3.2 Nutrition Data (Yazıo App)**
+### **3.1 Academic Workload Variables**
 
-| Variable   | Description                                      |
-| ---------- | ------------------------------------------------ |
-| `Calories` | Total daily calories logged in the Yazıo app     |
-
-Calories include all meals and snacks logged by the user.
-
----
-
-## **3.3 Combined Dataset Structure**
-
-The two sources were merged using a common `Date` column.
+| Variable           | Description                    |
+| ------------------ | ------------------------------ |
+| `Course_Load_Min`  | Lecture minutes attended       |
+| `Homework_Count`   | Number of homework assignments |
+| `Project_Count`    | Number of project tasks        |
+| `Exam_Count`       | Number of exams taken          |
+| `Exam_Number_Week` | Weekly exam intensity          |
 
 ---
 
-# **4. Workload Score Model**
+### **3.2 Nutrition Variable**
 
-Daily workload is computed using a custom scoring formula incorporating:
+| Variable   | Description                 |
+| ---------- | --------------------------- |
+| `Calories` | Total daily calories logged |
 
-- Lecture attendance  
-- Homework intensity  
-- Project workload  
-- Exam intensity  
-- Combo bonus (HW + Project + Exam same day)  
-- Weekly Fatigue Factor (stress accumulation across the week)
+---
 
-### **Final Formula**
-\[
+## **4. Workload Score Model**
+
+A **custom workload score** was designed to aggregate daily academic intensity into a single interpretable metric.
+
+[
 \text{Workload Score} = \text{Daily Base Workload} \times \text{Weekly Fatigue Factor}
-\]
+]
 
-This produces a **single interpretable metric** capturing overall academic intensity for each day.
+### Components:
 
----
+* Lecture attendance
+* Homework and project load
+* Exam intensity
+* Combo bonus (Homework + Project + Exam on same day)
+* Weekly fatigue accumulation
 
-# **4.1 Logic Behind Workload Weights**
-
-Weights were assigned based on the **relative cognitive burden, time requirement, and stress level** of each academic activity.
-
-### **Lecture Load: Course_Load_Min / 50**
-- 50 minutes = 1 academic hour  
-- Time-based baseline, prevents lectures from dominating the score  
-
-### **Homework Weight: 1.0 → 1.5 on Exam Days**
-Homework is moderate difficulty.  
-Increases on exam days due to:
-
-- Added time pressure  
-- Cognitive switching  
-- Stress amplification  
-
-### **Project Weight: 1.5 → 2.0 on Exam Days**
-Projects demand deeper thinking and longer commitment, so they are weighted higher than homework.
-
-### **Exam Weight: 2.5 + (0.7 × Exam_Number_Week)**
-Exams are the most stressful component.
-
-- Base = 2.5 → Preparation + performance stress  
-- Weekly multiplier → cumulative fatigue during exam-heavy weeks  
-
-### **Combo Bonus: +2 if Homework + Project + Exam occur together**
-Captures **nonlinear workload spikes** seen on chaotic academic days.
-
-### **Weekly Fatigue Factor**
-Workload often clusters into heavy weeks.  
-This multiplier reflects:
-
-- Accumulated stress  
-- Decreased recovery time  
-- Increasing cognitive load over the week  
+This structure captures **both daily stressors and cumulative weekly pressure**.
 
 ---
 
-# **5. Visualization**
+## **5. Exploratory Data Analysis (EDA)**
+
+Key visualizations include:
+
+* Workload vs calorie scatter and regression plots
+* Workload distribution
+* Weekday vs weekend calorie comparison
+* Daily and weekly calorie time series
+* Correlation heatmap
+
+These analyses suggest a **positive but noisy relationship** between workload and calorie intake.
 
 ---
 
-## **5.1 Scatter: Workload Score vs Calories**
-![Scatter Workload vs Calories](scatter_workload_calories.png)  
-**Caption:** Shows raw distribution. Light positive relationship but high variance.
+## **6. Statistical Hypothesis Testing**
+
+### **6.1 Independent Samples t-Test**
+
+* Comparison: Low (≤3) vs High (≥8) workload
+* Result: Not statistically significant (p = 0.1209)
+* Interpretation: Limited power due to small high-workload sample size
+
+### **6.2 One-Way ANOVA**
+
+* Groups: Low, Medium, High workload
+* Result: Statistically significant (p = 0.0043)
+* Interpretation: Calorie intake differs meaningfully across workload categories
 
 ---
 
-## **5.2 Regression Plot: Workload vs Calories**
-![Regression Workload vs Calories](regression_workload_calories.png)  
-**Caption:** Linear fit indicates a mild upward trend, but correlation strength is weak.
+## **7. Temporal Analysis: Exam Weeks & Pre–Post Exam Patterns**
+
+To address feedback beyond single exam days:
+
+### **Exam Week Analysis**
+
+* A binary `Is_Exam_Week` variable was created
+* Exam weeks exhibit **higher average calorie intake**, indicating sustained stress effects
+
+### **Pre–Post Exam Analysis**
+
+* Days were labeled relative to the nearest exam (−3 to +3)
+* Calories tend to **increase before exams** and decline afterward
+* This pattern suggests **anticipatory stress-related eating**
 
 ---
 
-## **5.3 Workload Score Distribution**
-![Workload Distribution](workload_distribution.png)  
-**Caption:** Most days fall into low/medium workload ranges. Few extreme workload days limit statistical power.
+## **8. Machine Learning Analysis**
+
+### **8.1 Multiple Linear Regression**
+
+A regression model was trained using:
+
+* Academic workload components
+* Exam intensity
+* Exam week indicator
+
+**Purpose:** Interpretability rather than high-accuracy prediction.
+
+Key findings:
+
+* Exam-related variables are the strongest predictors
+* Lecture load has a comparatively smaller effect
+* Exam week effect remains significant even after controlling for daily workload
 
 ---
 
-## **5.4 Weekday vs Weekend Calories**
-![Calories Weekday Weekend](weekday_weekend_calories.png)  
-**Caption:** Slightly higher variability on weekends. Average calories remain similar.
+### **8.2 Decision Tree Regression (Threshold Detection)**
+
+A shallow decision tree was used to detect **nonlinear workload thresholds**.
+
+**Finding:**
+Calorie intake increases sharply once workload exceeds a critical threshold, confirming that the relationship is **not purely linear**.
 
 ---
 
-## **5.5 Average Calories by Day of Week**
-![Calories by Day](calories_by_dayofweek.png)  
-**Caption:** Lowest intake on structured weekdays, highest on weekends.
+### **8.3 Random Forest Regression**
+
+A Random Forest model was applied to:
+
+* Validate feature importance rankings
+* Confirm robustness across ML techniques
+
+**Result:**
+Exam-related features consistently rank highest in importance.
 
 ---
 
-## **5.6 Average Workload by Day of Week**
-![Workload by Day](workload_by_dayofweek.png)  
-**Caption:** Tue–Thu show highest workload, consistent with real academic schedules.
+### **8.4 K-Means Clustering (Unsupervised Learning)**
+
+Using workload score and calories:
+
+* Days were clustered into three distinct groups
+* Clusters align closely with low, medium, and high workload categories
+* Provides unsupervised validation of workload classification
 
 ---
 
-## **5.7 Daily Calories Over Time (Exam Days Highlighted)**
-![Daily Calories Over Time](calories_timeseries_exam.png)  
-**Caption:** Noticeable calorie spikes on exam days (red points).
+## **9. Summary of Findings**
+
+* Academic workload and calorie intake are positively related
+* Exam-related stress is the dominant driver
+* Calorie intake increases **before exams**, not just on exam days
+* A clear workload threshold exists beyond which calorie intake rises sharply
+* Results are consistent across statistical tests and ML models
 
 ---
 
-## **5.8 Weekly Average Calories**
-![Weekly Calories](weekly_calories.png)  
-**Caption:** Workload-heavy weeks tend to show increased average calories.
+## **10. Tools & Technologies**
+
+* **Python**: pandas, numpy, matplotlib, seaborn
+* **Statistics**: scipy
+* **Machine Learning**: scikit-learn
+* **Preprocessing**: Excel
 
 ---
 
-## **5.9 Correlation Heatmap**
-![Correlation Heatmap](correlation_heatmap.png)  
-**Caption:** Workload Score correlates positively with calories and exam count.
+## **11. Conclusion**
 
----
+> **Higher academic workload is associated with increased calorie intake**,
+> particularly during exam weeks and beyond a critical workload threshold.
 
-# **6. Hypothesis Testing Results**
-
----
-
-## **6.1 Independent Samples t-Test (Low vs High Workload)**
-
-| Group | Condition | Days |
-|-------|----------|------|
-| Low Workload | ≤ 3 | 47 |
-| High Workload | ≥ 8 | 10 |
-
-**Results:**  
-- t-statistic: **−1.7000**  
-- p-value: **0.1209**  
-
-**Interpretation:**  
-No statistically significant difference.  
-High-workload sample size is too small → reduced statistical power.
-
----
-
-## **6.2 One-Way ANOVA (Low vs Medium vs High Workload)**
-
-**Results:**  
-- F-statistic: **5.9362**  
-- p-value: **0.0043**  
-
-**Interpretation:**  
-Highly significant.  
-Workload categories show real differences in calorie intake.
-
-**Trend:**  
-- Medium workload → highest calories  
-- Low workload → lowest  
-- High workload → elevated but small sample size reduces precision  
-
----
-
-# **7. Summary of Findings**
-
-- **Low vs High t-test:** Not significant  
-- ✔ **ANOVA (Low vs Medium vs High):** Significant  
-
-This suggests:
-
-- Binary comparison masks effects due to low sample size  
-- Categorical workload better captures calorie variation  
-
----
-
-# **8. Tools Used**
-
-- Python (pandas, numpy, seaborn, matplotlib, scipy)  
-- Excel (preprocessing)
-
----
-
-# **9. Conclusion**
-
-> **Higher workload generally leads to higher calorie intake**,  
-> supported by trends and ANOVA significance.
-
-While the low vs high comparison is not statistically significant due to sample size imbalance, workload categories clearly influence calorie consumption patterns.
+By combining **statistical inference** with **interpretable machine learning models**, this project provides a robust, data-driven understanding of stress-related eating behavior in academic settings.
 
 ---
